@@ -2,13 +2,13 @@
     Cascade: Animation Plugin
  */
 (function ( $ ) {
-
-    // Declare Plugin
     $.fn.cascade = function ( options ) {
 
         // Parameters
         var settings = $.extend({
-            interval: 200 // in ms
+            interval: 200, //in ms
+            beforeCascade: function() {},
+            afterCascade: function() {}
         }, options);
 
         // Initialization
@@ -19,8 +19,12 @@
                 'opacity': 0
             });
         }).promise().done(function() {
+
+            // Pre-Run Callback
+            settings.beforeCascade();
+
             // Cascading Animation
-            return this.each(function ( index ) {
+            this.each(function ( index ) {
                 $(this)
                     .delay(settings.interval * index)
                     .animate({
@@ -28,7 +32,8 @@
                             'opacity': 1
                         });
             }).promise().done(function() {
-                    // Runs after elements are displayed
+                // Post-Run Callback
+                settings.afterCascade();
             });
         });
     };
