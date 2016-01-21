@@ -2,13 +2,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Cascade &mdash; jQuery Plugin</title>
+    <link rel="stylesheet" href="vendor/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-
+<body class="bg-warning">
     <!-- Main Content -->
-    <main>
-        <ol class="cascade-container">
+    <main class="container">
+        <!-- Heading -->
+        <div class="jumbotron">
+            <h2>Cascade <small>a jQuery Plugin</small></h2>
+        </div>
+        <ul class="cascade-container row" style="list-style-type:none;">
             <li class="cascade">List Item #1</li>
             <li class="cascade">List Item #2</li>
             <li class="cascade">List Item #3</li>
@@ -29,8 +33,10 @@
             <li class="cascade">List Item #18</li>
             <li class="cascade">List Item #19</li>
             <li class="cascade">List Item #20</li>
-        </ol>
-        <button class="trigger">Cascade</button>
+        </ul>
+        <p>
+            <button type="button" class="btn btn-info trigger">Try it out</button>
+        </p>
     </main>
 
     <!-- Import jQuery (required) -->
