@@ -11,30 +11,32 @@
             afterCascade: function() {}
         }, options);
 
-        // Initialization
-        this.each(function() {
+        function hide() {
             $(this).css({
                 'position': 'relative',
                 'left': '-2000px',
                 'opacity': 0
             });
-        }).promise().done(function() {
+        }
 
-            // Pre-Run Callback
+        function show( index ) {
+            $(this).delay(settings.interval * index)
+                .animate({
+                    'left': 0,
+                    'opacity': 1
+                });
+        }
+
+        function cycle ( context, fn, callback ) {
+            context.each(fn).promise().done(callback);
+        }
+
+        // Initialize Plugin
+        cycle(this, hide, function() {
+            // Pre-Cascade callback
             settings.beforeCascade();
-
-            // Cascading Animation
-            this.each(function ( index ) {
-                $(this)
-                    .delay(settings.interval * index)
-                    .animate({
-                            'left': 0,
-                            'opacity': 1
-                        });
-            }).promise().done(function() {
-                // Post-Run Callback
-                settings.afterCascade();
-            });
+            // Start Cascade and run Post-Cascade callback
+            cycle(this, show, settings.afterCascade);
         });
     };
 })( jQuery );
