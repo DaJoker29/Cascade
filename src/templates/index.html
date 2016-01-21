@@ -12,7 +12,7 @@
         <div class="jumbotron">
             <h2>Cascade <small>a jQuery Plugin</small></h2>
         </div>
-        <ul class="cascade-container row" style="list-style-type:none;">
+        <ul style="list-style-type:none;">
             <li class="cascade">List Item #1</li>
             <li class="cascade">List Item #2</li>
             <li class="cascade">List Item #3</li>
@@ -35,7 +35,7 @@
             <li class="cascade">List Item #20</li>
         </ul>
         <p>
-            <button type="button" class="btn btn-info trigger">Try it out</button>
+            <button type="button" class="btn btn-info trigger" onclick="$('.cascade').cascade();">Try it out</button>
         </p>
     </main>
 
@@ -43,7 +43,7 @@
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script src="script.js"></script>
     <script>
-        $.fn.cascade();
+        $('.cascade').cascade();
     </script>
 </body>
 </html>
