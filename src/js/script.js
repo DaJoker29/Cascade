@@ -11,27 +11,30 @@
             afterCascade: function() {}
         }, options);
 
-        // Initialization
-        this.each(function() {
+        function hide() {
             $(this).css({
                 'position': 'relative',
                 'left': '-2000px',
                 'opacity': 0
             });
-        }).promise().done(function() {
+        }
+
+        function show( index ) {
+            $(this).delay(settings.interval * index)
+                .animate({
+                    'left': 0,
+                    'opacity': 1
+                });
+        }
+
+        // Initialization
+        this.each(hide).promise().done(function() {
 
             // Pre-Run Callback
             settings.beforeCascade();
 
             // Cascading Animation
-            this.each(function ( index ) {
-                $(this)
-                    .delay(settings.interval * index)
-                    .animate({
-                            'left': 0,
-                            'opacity': 1
-                        });
-            }).promise().done(function() {
+            this.each(show).promise().done(function() {
                 // Post-Run Callback
                 settings.afterCascade();
             });
