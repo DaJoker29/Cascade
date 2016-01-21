@@ -27,17 +27,16 @@
                 });
         }
 
-        // Initialization
-        this.each(hide).promise().done(function() {
+        function cycle ( context, fn, callback ) {
+            context.each(fn).promise().done(callback);
+        }
 
-            // Pre-Run Callback
+        // Initialize Plugin
+        cycle(this, hide, function() {
+            // Pre-Cascade callback
             settings.beforeCascade();
-
-            // Cascading Animation
-            this.each(show).promise().done(function() {
-                // Post-Run Callback
-                settings.afterCascade();
-            });
+            // Start Cascade and run Post-Cascade callback
+            cycle(this, show, settings.afterCascade);
         });
     };
 })( jQuery );
