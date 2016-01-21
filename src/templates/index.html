@@ -1,11 +1,53 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Project Title</title>
+    <title>Cascade &mdash; jQuery Plugin</title>
+    <link rel="stylesheet" href="vendor/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    
+<body class="bg-warning">
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Heading -->
+        <div class="jumbotron">
+            <h2>Cascade <br><small>a jQuery Plugin</small></h2>
+        </div>
+        <ul>
+            <li class="cascade">List Item #1</li>
+            <li class="cascade">List Item #2</li>
+            <li class="cascade">List Item #3</li>
+            <li class="cascade">List Item #4</li>
+            <li class="cascade">List Item #5</li>
+            <li class="cascade">List Item #6</li>
+            <li class="cascade">List Item #7</li>
+            <li class="cascade">List Item #8</li>
+            <li class="cascade">List Item #9</li>
+            <li class="cascade">List Item #10</li>
+            <li class="cascade">List Item #11</li>
+            <li class="cascade">List Item #12</li>
+            <li class="cascade">List Item #13</li>
+            <li class="cascade">List Item #14</li>
+            <li class="cascade">List Item #15</li>
+            <li class="cascade">List Item #16</li>
+            <li class="cascade">List Item #17</li>
+            <li class="cascade">List Item #18</li>
+            <li class="cascade">List Item #19</li>
+            <li class="cascade">List Item #20</li>
+        </ul>
+        <p>
+            <button type="button" class="btn btn-lg btn-success trigger" onclick="$('.cascade').cascade();">Try it out</button>
+        </p>
+    </main>
+
+    <!-- Import jQuery (required) -->
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        $('.cascade').cascade({
+            afterCascade: function() {
+                $('.trigger').fadeIn('slow');
+            }
+        });
+    </script>
 </body>
 </html>
