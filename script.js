@@ -1,1 +1,38 @@
-!function(a){a.fn.cascade=function(b){function c(){a(this).css({position:"relative",left:"-2000px",opacity:0})}function d(b){a(this).delay(f.interval*b).animate({left:0,opacity:1})}function e(a,b,c){a.each(b).promise().done(c)}var f=a.extend({interval:200,beforeCascade:function(){},afterCascade:function(){}},b);e(this,c,function(){f.beforeCascade(),e(this,d,f.afterCascade)})}}(jQuery);
+/*
+    Cascade: Animation Plugin
+ */
+(function($) {
+    $.fn.cascade = function(options) {
+        // Parameters
+        var settings = $.extend({
+            interval: 200,
+            //in ms
+            beforeCascade: function() {},
+            afterCascade: function() {}
+        }, options);
+        function hide() {
+            $(this).css({
+                position: "relative",
+                left: "-2000px",
+                opacity: 0
+            });
+        }
+        function show(index) {
+            $(this).delay(settings.interval * index).animate({
+                left: 0,
+                opacity: 1
+            });
+        }
+        function cycle(context, fn, callback) {
+            context.each(fn).promise().done(callback);
+        }
+        // Initialize Plugin
+        cycle(this, hide, function() {
+            // Pre-Cascade callback
+            settings.beforeCascade();
+            // Start Cascade and run Post-Cascade callback
+            cycle(this, show, settings.afterCascade);
+        });
+    };
+})(jQuery);
+//# sourceMappingURL=script.js.map
