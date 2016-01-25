@@ -1,5 +1,6 @@
 body {
     text-align: center;
+    overflow-x: hidden;
 }
 
 .trigger {
@@ -9,4 +10,14 @@ body {
 ul {
     list-style-type: none;
     padding: 2em 0;
+}
+
+.slide {
+    display: none;
+}
+
+@media (min-width: 991px) {
+    body {
+        overflow-y: hidden;
+    }
 }
