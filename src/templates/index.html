@@ -9,9 +9,7 @@
     <!-- Main Content -->
     <main class="container">
         <!-- Heading -->
-        <div class="jumbotron">
-            <h2>Cascade <br><small>a jQuery Plugin</small></h2>
-        </div>
+        <div class="jumbotron github"></div>
         <div class="row">
             <div class="slide slideRight col-md-3">
                 <h3>Sliding Right</h3>
@@ -94,48 +92,56 @@
 
     <!-- Import jQuery (required) -->
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="vendor/gh-info.js"></script>
     <script src="script.js"></script>
     <script>
-    $(document).ready(function() {
-        $('.slideRight .cascade').cascade({
-            beforeCascade: function () {
-                $('.slideRight').show();
-            },
-            afterCascade: function() {
-                $('.slideRight .trigger').fadeIn('slow');
-            }
-        }).promise().done(function() {
-            $('.slideUp .cascade').cascade({
-                direction: 'slideUp',
+        // Import Github Info
+        $('.github').github({
+            username: 'Dajoker29',
+            repo: 'cascade'
+        });
+
+        // Load Demo
+        $(document).ready(function() {
+            $('.slideRight .cascade').cascade({
                 beforeCascade: function () {
-                    $('.slideUp').show();
+                    $('.slideRight').show();
                 },
                 afterCascade: function() {
-                    $('.slideUp .trigger').fadeIn('slow');
+                    $('.slideRight .trigger').fadeIn('slow');
                 }
             }).promise().done(function() {
-                $('.slideDown .cascade').cascade({
-                    direction: 'slideDown',
+                $('.slideUp .cascade').cascade({
+                    direction: 'slideUp',
                     beforeCascade: function () {
-                        $('.slideDown').show();
+                        $('.slideUp').show();
                     },
                     afterCascade: function() {
-                        $('.slideDown .trigger').fadeIn('slow');
+                        $('.slideUp .trigger').fadeIn('slow');
                     }
                 }).promise().done(function() {
-                    $('.slideLeft .cascade').cascade({
-                        direction: 'slideLeft',
+                    $('.slideDown .cascade').cascade({
+                        direction: 'slideDown',
                         beforeCascade: function () {
-                            $('.slideLeft').show();
+                            $('.slideDown').show();
                         },
                         afterCascade: function() {
-                            $('.slideLeft .trigger').fadeIn('slow');
+                            $('.slideDown .trigger').fadeIn('slow');
                         }
+                    }).promise().done(function() {
+                        $('.slideLeft .cascade').cascade({
+                            direction: 'slideLeft',
+                            beforeCascade: function () {
+                                $('.slideLeft').show();
+                            },
+                            afterCascade: function() {
+                                $('.slideLeft .trigger').fadeIn('slow');
+                            }
+                        });
                     });
                 });
             });
-        });
-    })
+        })
     </script>
 </body>
 </html>
