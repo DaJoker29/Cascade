@@ -6,10 +6,12 @@
         // Parameters
         var settings = $.extend({
             direction: "slideRight",
-            interval: 200,
+            interval: 250,
             //in ms
+            triggerDelay: 500,
             beforeCascade: function() {},
-            afterCascade: function() {}
+            afterCascade: function() {},
+            onLoad: function() {}
         }, options);
         function hide() {
             $(this).css({
@@ -38,24 +40,27 @@
                 break;
             }
         }
-        function show(index) {
-            $(this).delay(settings.interval * index).animate({
-                left: 0,
-                right: 0,
-                bottom: 0,
-                top: 0,
-                opacity: 1
-            });
-        }
-        function cycle(context, fn, callback) {
-            context.each(fn).promise().done(callback);
-        }
-        // Initialize Plugin
-        cycle(this, hide, function() {
-            // Pre-Cascade callback
+        // Load Hook
+        settings.onLoad();
+        // Hide on load
+        this.each(hide).promise().done(function(index) {
+            // Pre-Run Hook
             settings.beforeCascade();
-            // Start Cascade and run Post-Cascade callback
-            cycle(this, show, settings.afterCascade);
+            // Create Context
+            var element = $(this);
+            // Cascade each in a delayed fashion
+            element.delay(settings.triggerDelay).each(function(index) {
+                $(this).delay(settings.interval * index).animate({
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    top: 0,
+                    opacity: 1
+                });
+            }).promise().done(function() {
+                // Post-Run Hook
+                settings.afterCascade();
+            });
         });
         return this;
     };

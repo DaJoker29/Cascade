@@ -3,13 +3,21 @@
     <meta charset="UTF-8">
     <title>Cascade &mdash; jQuery Plugin</title>
     <link rel="stylesheet" href="vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-warning">
     <!-- Main Content -->
     <main class="container">
         <!-- Heading -->
-        <div class="jumbotron github"></div>
+        <div class="jumbotron">
+            <h2><a href="https://github.com/DaJoker29/Cascade">Cascade</a> <small>v1.0.0</small></h2>
+            <span class="label label-default">Last Updated: 2016-01-29</span>
+            <span class="label label-warning">JavaScript</span>
+            <span class="label label-warning">jQuery</span>
+            <a href="https://github.com/DaJoker29"><span class="label label-success"><i class="fa fa-github"></i> DaJoker29</span></a>
+            <p>JavaScript plugin used to create a cascading effect on ordered elements</p>
+        </div>
         <div class="row">
             <div class="slide slideRight col-md-3">
                 <h3>Sliding Right</h3>
@@ -109,6 +117,9 @@
                 },
                 afterCascade: function() {
                     $('.slideRight .trigger').fadeIn('slow');
+                },
+                onLoad: function() {
+                    $('.slide, .trigger').css('display', 'none');
                 }
             }).promise().done(function() {
                 $('.slideUp .cascade').cascade({

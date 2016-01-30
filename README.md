@@ -38,8 +38,9 @@ An object containing the following parameters can be passed in as a argument, de
 
 ```
 {
-  interval: 200, // in milliseconds
+  interval: 250, // in milliseconds
   direction: 'slideRight', // 'slideRight', 'slideLeft', 'slideUp', 'slideDown'
+  triggerDelay: 500,
   beforeCascade: function() {},
   afterCascade: function() {}
 }
@@ -54,9 +55,9 @@ Roadmap
 - ~~Slide from top~~
 - ~~Slide from bottom~~
 - ~~Pre- & Post-Run Hooks~~
-- Switch hidden/visible state until triggered
 
 ### Next + 1
+- Switch hidden/visible state until triggered
 - Fade In
 - Fade Out
 - Extend Down (see project list)
